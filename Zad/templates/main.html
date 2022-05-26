@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>app</h1>
+<form method="post" {% if page_obj.has_next %}target="dummyframe"{% endif %}>
+    {% csrf_token %}
+    {% for i in tasks %}
+    <h1>{{ i.title }}</h1>
+    <input type="radio" name="{{ i.title }}" value="Q1" checked>
+    {{ i.q1 }}
+    <input type="radio" name="{{ i.title }}" value="Q2">
+    {{ i.q2 }}
+    <input type="radio" name="{{ i.title }}" value="Q3">
+    {{ i.q3 }}
+    <input type="radio" name="{{ i.title }}" value="Q4">
+    {{ i.q4 }}<br><br>
+    {% endfor %}
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+    {% if page_obj.has_next %}
+        <input id="sub" type="submit" onclick="setTimeout(func, 1)" name="next">
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+    {% else %}
+        <a href="{% url 'answer' %}"><input type="submit" name="end" value="DA"></a>
+    {% endif %}
+</form>
+
+<script>
+var func = function() {
+    document.getElementById('sub').remove();
+};
+</script>
+</body>
+</html>

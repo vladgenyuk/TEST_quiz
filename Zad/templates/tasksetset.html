@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'register' %}">register</a>
+<a href="{% url 'login' %}">login</a>
+  {% for i in TaskSetSet %}
+  <a href="{% url 'tasklist' list_num=i.pk  %}"><h3>{{ i }}</h3></a>
+  {% endfor %}
+</body>
+</html>
