@@ -4,10 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, FormView
+from django.core.paginator import Paginator
 
 from .forms import RegisterUserForm, LoginUserForm
 from .models import Task, TaskSet, TaskSetSet, Answer
-from django.core.paginator import Paginator
 
 
 def answer(request):
